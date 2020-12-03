@@ -18,7 +18,7 @@ object Solution {
   }
 
   def partTwo: Int = {
-    val inputMapped: Seq[(Int, String)] = input.indices.zip(input)
+    val inputMapped: Seq[(String, Int)] = input.zipWithIndex
     val steps = Seq(
       (1, 1),
       (3, 1),
@@ -29,7 +29,7 @@ object Solution {
     steps.foldLeft(1){
       case (product, (right, down)) =>
         inputMapped.foldLeft(Seq.empty[Boolean]) {
-          case (locs, (i, row)) =>
+          case (locs, (row, i)) =>
             if (i % down == 0) {
               val drop = right  * locs.length % patternLength
               Seq(row.drop(drop).head == '#') ++ locs
