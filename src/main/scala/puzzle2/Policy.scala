@@ -14,7 +14,6 @@ case class OldPolicy(min: Int, max: Int, letter: Char) extends Policy {
 object OldPolicy {
   def apply(minStr: String, maxStr: String, letterStr: String): Policy = {
     OldPolicy(minStr.toInt, maxStr.toInt, letterStr(0))
-
   }
 }
 
@@ -27,6 +26,5 @@ case class NewPolicy(a: Int, b: Int, letter: Char) extends Policy {
 object NewPolicy {
   def apply(firstStr: String, secondStr: String, letterStr: String): Policy = {
     NewPolicy(firstStr.toInt, secondStr.toInt, letterStr(0))
-
   }
 }
