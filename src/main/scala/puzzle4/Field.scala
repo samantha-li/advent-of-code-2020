@@ -25,21 +25,21 @@ object Field {
 case object BirthYear extends Field {
   val fieldName = "byr"
   def validate(value: String): Boolean = {
-    Try(value.toInt).map(1920 to 2002 contains _).getOrElse(false)
+    value.toIntOption.exists(v => v >= 1920 && v <= 2002)
   }
 }
 
 case object IssueYear extends Field {
   val fieldName = "iyr"
   def validate(value: String): Boolean = {
-    Try(value.toInt).map(2010 to 2020 contains _).getOrElse(false)
+    value.toIntOption.exists(v => v >= 2010 && v <= 2020)
   }
 }
 
 case object ExpirationYear extends Field {
   val fieldName = "eyr"
   def validate(value: String): Boolean = {
-    Try(value.toInt).map(2020 to 2030 contains _).getOrElse(false)
+    value.toIntOption.exists(v => v >= 2020 && v <= 2030)
   }
 }
 
@@ -47,8 +47,8 @@ case object Height extends Field {
   val fieldName = "hgt"
   def validate(value: String): Boolean = {
     value match {
-      case s"${num}cm" => Try(num.toInt).map(150 to 193 contains _).getOrElse(false)
-      case s"${num}in" => Try(num.toInt).map(59 to 76 contains _).getOrElse(false)
+      case s"${num}cm" => num.toIntOption.exists(v => v >= 150 && v <= 193)
+      case s"${num}in" => num.toIntOption.exists(v => v >= 59 && v <= 76)
       case _ => false
     }
   }
