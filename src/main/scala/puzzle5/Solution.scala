@@ -44,7 +44,6 @@ object Solution {
     val offset = sorted.head
     val (hi, _) = binarySearchHelper(sorted, sorted.length - 1, 0, offset)
     sorted(hi) - 1
-
   }
 
   def main(args: Array[String]): Unit = {
