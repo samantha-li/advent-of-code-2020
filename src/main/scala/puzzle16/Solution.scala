@@ -12,7 +12,7 @@ object Solution {
   val input: Seq[String] = Source.fromResource("input16.txt")
     .getLines
     .toSeq
-  
+
   val indexOfMyTicket: Int = input.zipWithIndex.filter(x => x._1 == "your ticket:").head._2 + 1
   val indexOfNearbyTickets: Int = indexOfMyTicket + 3
 
